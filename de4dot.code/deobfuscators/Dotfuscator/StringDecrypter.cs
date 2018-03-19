@@ -36,9 +36,7 @@ namespace de4dot.code.deobfuscators.Dotfuscator {
 			}
 		}
 
-		public bool Detected {
-			get { return stringDecrypterMethods.Count > 0; }
-		}
+		public bool Detected => stringDecrypterMethods.Count > 0;
 
 		public IEnumerable<MethodDef> StringDecrypters {
 			get {
@@ -49,13 +47,8 @@ namespace de4dot.code.deobfuscators.Dotfuscator {
 			}
 		}
 
-		public IEnumerable<StringDecrypterInfo> StringDecrypterInfos {
-			get { return stringDecrypterMethods.GetValues(); }
-		}
-
-		public StringDecrypter(ModuleDefMD module) {
-			this.module = module;
-		}
+		public IEnumerable<StringDecrypterInfo> StringDecrypterInfos => stringDecrypterMethods.GetValues();
+		public StringDecrypter(ModuleDefMD module) => this.module = module;
 
 		public void Find(ISimpleDeobfuscator simpleDeobfuscator) {
 			foreach (var type in module.GetTypes())
@@ -91,7 +84,21 @@ namespace de4dot.code.deobfuscators.Dotfuscator {
 					if (!ldci4.IsLdcI4())
 						continue;
 
-					var info = new StringDecrypterInfo(method, ldci4.GetLdcI4Value());
+					int magicAdd = 0;
+					if (i < instrs.Count - 6) {
+						var ldarg1 = instrs[i + 4];
+						if (ldarg1.IsLdarg() && ldarg1.GetParameterIndex() == 1) {
+							var opAdd1 = instrs[i + 5];
+							if (opAdd1.OpCode == OpCodes.Add) {
+								var ldci4_2 = instrs[i + 6];
+								if (ldci4_2.IsLdcI4()) {
+									magicAdd = ldci4_2.GetLdcI4Value();
+								}
+							}
+						}
+					}
+
+					var info = new StringDecrypterInfo(method, ldci4.GetLdcI4Value() + magicAdd);
 					stringDecrypterMethods.Add(info.method, info);
 					Logger.v("Found string decrypter method: {0}, magic: 0x{1:X8}", Utils.RemoveNewlines(info.method), info.magic);
 					break;
