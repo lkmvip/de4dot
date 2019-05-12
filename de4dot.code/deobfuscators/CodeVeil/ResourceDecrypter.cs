@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -293,7 +293,7 @@ namespace de4dot.code.deobfuscators.CodeVeil {
 				if (resource == null)
 					continue;
 
-				var rsrcReader = resource.GetReader();
+				var rsrcReader = resource.CreateReader();
 				var decrypted = Decrypt(ref rsrcReader);
 				if (decrypted == null)
 					continue;

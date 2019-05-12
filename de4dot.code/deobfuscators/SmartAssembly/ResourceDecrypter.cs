@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -35,7 +35,7 @@ namespace de4dot.code.deobfuscators.SmartAssembly {
 		public byte[] Decrypt(EmbeddedResource resource) {
 			if (!CanDecrypt)
 				throw new ApplicationException("Can't decrypt resources");
-			var encryptedData = resource.GetReader().ToArray();
+			var encryptedData = resource.CreateReader().ToArray();
 			return Decrypt(encryptedData);
 		}
 

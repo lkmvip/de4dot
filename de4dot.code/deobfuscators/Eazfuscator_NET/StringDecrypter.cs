@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -451,7 +451,7 @@ namespace de4dot.code.deobfuscators.Eazfuscator_NET {
 		}
 
 		void Initialize() {
-			reader = new BinaryReader(encryptedResource.GetReader().AsStream());
+			reader = new BinaryReader(encryptedResource.CreateReader().AsStream());
 			short len = (short)(reader.ReadInt16() ^ s1);
 			if (len != 0)
 				theKey = reader.ReadBytes(len);

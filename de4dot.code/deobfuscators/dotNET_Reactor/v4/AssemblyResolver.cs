@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -185,7 +185,7 @@ namespace de4dot.code.deobfuscators.dotNET_Reactor.v4 {
 		static int unknownNameCounter = 0;
 		static string GetAssemblyName(EmbeddedResource resource) {
 			try {
-				var resourceModule = ModuleDefMD.Load(resource.GetReader().ToArray());
+				var resourceModule = ModuleDefMD.Load(resource.CreateReader().ToArray());
 				return resourceModule.Assembly.FullName;
 			}
 			catch {

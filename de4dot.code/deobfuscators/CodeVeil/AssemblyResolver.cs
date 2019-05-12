@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -107,10 +107,10 @@ namespace de4dot.code.deobfuscators.CodeVeil {
 		}
 
 		void FindEmbeddedAssemblies() {
-			var data = bundleData.GetReader().ToArray();
+			var data = bundleData.CreateReader().ToArray();
 
 			var doc = new XmlDocument();
-			doc.Load(XmlReader.Create(bundleXmlFile.GetReader().AsStream()));
+			doc.Load(XmlReader.Create(bundleXmlFile.CreateReader().AsStream()));
 			var manifest = doc.DocumentElement;
 			if (manifest.Name.ToLowerInvariant() != "manifest") {
 				Logger.w("Could not find Manifest element");

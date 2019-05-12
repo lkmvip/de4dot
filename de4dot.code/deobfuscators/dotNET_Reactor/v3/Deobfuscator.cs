@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -241,9 +241,9 @@ namespace de4dot.code.deobfuscators.dotNET_Reactor.v3 {
 
 		void DumpResourceFiles() {
 			foreach (var resource in libAssemblyResolver.Resources) {
-				var mod = ModuleDefMD.Load(resource.GetReader().ToArray());
+				var mod = ModuleDefMD.Load(resource.CreateReader().ToArray());
 				AddResourceToBeRemoved(resource, $"Embedded assembly: {mod.Assembly.FullName}");
-				DeobfuscatedFile.CreateAssemblyFile(resource.GetReader().ToArray(),
+				DeobfuscatedFile.CreateAssemblyFile(resource.CreateReader().ToArray(),
 							Utils.GetAssemblySimpleName(mod.Assembly.FullName),
 							DeobUtils.GetExtension(mod.Kind));
 			}

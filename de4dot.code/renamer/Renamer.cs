@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -218,7 +218,7 @@ namespace de4dot.code.renamer {
 
 		static bool HasXamlFiles(ModuleDef module, EmbeddedResource rsrc) {
 			try {
-				var rsrcSet = ResourceReader.Read(module, rsrc.GetReader());
+				var rsrcSet = ResourceReader.Read(module, rsrc.CreateReader());
 				foreach (var elem in rsrcSet.ResourceElements) {
 					if (elem.Name.EndsWith(".baml") || elem.Name.EndsWith(".xaml"))
 						return true;

@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -128,7 +128,7 @@ namespace de4dot.code.deobfuscators.Babel_NET {
 		}
 
 		byte[] DecryptResourceAssembly() {
-			var decrypted = resourceDecrypter.Decrypt(encryptedResource.GetReader().ToArray());
+			var decrypted = resourceDecrypter.Decrypt(encryptedResource.CreateReader().ToArray());
 			var reader = new BinaryReader(new MemoryStream(decrypted));
 
 			int numResources = reader.ReadInt32() ^ xorKey1;

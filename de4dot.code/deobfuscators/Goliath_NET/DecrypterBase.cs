@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -110,7 +110,7 @@ namespace de4dot.code.deobfuscators.Goliath_NET {
 			if (encryptedResource == null)
 				return;
 
-			decryptedReader = new BinaryReader(new MemoryStream(Decrypt(encryptedResource.GetReader().ToArray())));
+			decryptedReader = new BinaryReader(new MemoryStream(Decrypt(encryptedResource.CreateReader().ToArray())));
 
 			delegateType = null;
 			foreach (var type in module.GetTypes()) {

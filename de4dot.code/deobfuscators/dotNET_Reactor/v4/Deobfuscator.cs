@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -555,7 +555,7 @@ namespace de4dot.code.deobfuscators.dotNET_Reactor.v4 {
 				return;
 			foreach (var info in assemblyResolver.GetEmbeddedAssemblies(DeobfuscatedFile, this)) {
 				var simpleName = Utils.GetAssemblySimpleName(info.name);
-				DeobfuscatedFile.CreateAssemblyFile(info.resource.GetReader().ToArray(), simpleName, null);
+				DeobfuscatedFile.CreateAssemblyFile(info.resource.CreateReader().ToArray(), simpleName, null);
 				AddResourceToBeRemoved(info.resource, $"Embedded assembly: {info.name}");
 			}
 		}

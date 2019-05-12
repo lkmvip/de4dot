@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -233,7 +233,7 @@ namespace de4dot.code.deobfuscators.CodeWall {
 				info.Magic1 = FindMagic1(info.Method);
 				info.Magic2 = FindMagic2(info.Method);
 				info.Magic3 = FindMagic3(info.Method);
-				info.Reader = info.Resource.GetReader();
+				info.Reader = info.Resource.CreateReader();
 				info.Reader.Position = 0;
 			}
 		}

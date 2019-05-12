@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -327,7 +327,7 @@ namespace de4dot.code.deobfuscators.Eazfuscator_NET {
 				if (info.Resource == null)
 					throw new ApplicationException($"Could not find resource {Utils.ToCsharpString(info.ResourceName)}");
 
-				info.Data = info.Resource.GetReader().ToArray();
+				info.Data = info.Resource.CreateReader().ToArray();
 				if (info.IsEncrypted)
 					Decrypt(info.Data);
 				if (info.IsCompressed)

@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -286,7 +286,7 @@ namespace de4dot.code.deobfuscators.CryptoObfuscator {
 		}
 
 		void DumpEmbeddedFile(EmbeddedResource resource, string assemblyName, string extension, string reason) {
-			DeobfuscatedFile.CreateAssemblyFile(resourceDecrypter.Decrypt(resource.GetReader().AsStream()), Utils.GetAssemblySimpleName(assemblyName), extension);
+			DeobfuscatedFile.CreateAssemblyFile(resourceDecrypter.Decrypt(resource.CreateReader().AsStream()), Utils.GetAssemblySimpleName(assemblyName), extension);
 			AddResourceToBeRemoved(resource, reason);
 		}
 

@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -139,7 +139,7 @@ namespace de4dot.code.deobfuscators.Confuser {
 			if (!InitializeFields(theDecrypterInfo))
 				throw new ApplicationException("Could not find all fields");
 
-			SetConstantsData(DeobUtils.Inflate(resource.GetReader().ToArray(), true));
+			SetConstantsData(DeobUtils.Inflate(resource.CreateReader().ToArray(), true));
 		}
 
 		bool InitializeFields(DecrypterInfo info) {

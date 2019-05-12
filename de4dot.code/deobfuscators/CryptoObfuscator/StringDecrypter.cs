@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -54,7 +54,7 @@ namespace de4dot.code.deobfuscators.CryptoObfuscator {
 				return;
 			Logger.v("Adding string decrypter. Resource: {0}", Utils.ToCsharpString(stringResource.Name));
 
-			decryptedData = resourceDecrypter.Decrypt(stringResource.GetReader().AsStream());
+			decryptedData = resourceDecrypter.Decrypt(stringResource.CreateReader().AsStream());
 		}
 
 		string GetResourceName() {
